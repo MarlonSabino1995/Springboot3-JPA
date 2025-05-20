@@ -57,9 +57,5 @@ public class UserResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	public String putMethodName(@PathVariable String id, @RequestBody String entity) {
-		//TODO: process PUT request
-		
-		return entity;
-	}
+	
 }

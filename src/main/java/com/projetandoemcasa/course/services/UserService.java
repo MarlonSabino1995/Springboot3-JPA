@@ -1,4 +1,4 @@
-package com.projetandoemcasa.course.services;
+ package com.projetandoemcasa.course.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.projetandoemcasa.course.entities.User;
 import com.projetandoemcasa.course.repositories.UserRepository;
+import com.projetandoemcasa.course.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -21,8 +22,7 @@ public class UserService {
 	
 	public User findById(Long id) {
 		Optional<User> user = repository.findById(id);
-		
-		return user.get();
+		return user.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	public User insert(User obj) {
